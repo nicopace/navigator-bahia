@@ -1,121 +1,288 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>PhoneGap Camera API Sample</title>
-        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1"> 
-        <meta name="Copyright" content="&copy; 2012, Intel Corporation" />
-        <!--
-           * Copyright (c) 2012, Intel Corporation. All rights reserved.
-           * File revision: 04 October 2012
-           * Please see http://software.intel.com/html5/license/samples 
-           * and the included README.md file for license terms and conditions.
-        -->
-        
-        <script src="cordova.js"></script>
-        <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.1.1.min.js"></script>
-        <script type="text/javascript" src="js/camera.js"></script>
-        
-        <link rel="stylesheet" href="css/jquery.mobile-1.1.1.min.css"> 
-        <link rel="stylesheet" href="css/camera.css" type="text/css">
-    </head>
-    
-    <body onload="onLoad()">
-		
-        <!-- Home Page (menu page) -->
-        <div data-role="page" id="home_page" data-theme="a">
-            <div data-role="header">
-                <h3>PhoneGap Camera API Sample</h3>
-                <a href="#settings_page" data-role="button" id="settings_button" data-theme="b" data-mini="true" class="ui-btn-right">Settings</a>
-            </div>
-            <div data-role="content">
-                <a href="#" data-role="button" id="open_camera_button">Capture a photo with camera</a>
-                <a href="#" data-role="button" id="open_lib_button">Open Photo Library</a>
-                <a href="#" data-role="button" id="open_alb_button">Open saved photo album</a>
-                
-                <div id="settings_info" class="ui-body ui-body-b info"></div>
-            </div>
-            <div data-role="footer" class="stickbottom">
-                <div><a rel="LICENSE" href="http://software.intel.com/html5/license/samples" target="_blank">License Terms and Conditions</a></div>
-            </div>
-        </div>
-        
-        <!-- Settings edit page -->
-        <div data-role="page" id="settings_page" data-theme="a">
-            <div data-role="header">
-                <a href="#home_page" id="settings_cancel_button" data-role="button" data-mini="true" class="ui-btn-left">Cancel</a>
-                <h3>Picture Settings</h3>
-                <a href="#home_page" id="settings_ok_button" data-role="button" data-theme="b" data-mini="true" class="ui-btn-right">Save</a>
-            </div>
-            
-            <div data-role="content">
-            
-                <form name="settings_form" id="settings_form">
-                    
-                    <div data-role="collapsible-set" data-inset="false" data-mini="true">
+        <meta charset='utf-8'>
+        <title>Navigator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="stylesheet" href="static/css/jquery.mobile-1.3.1.min.css" />
+        <link rel="stylesheet" href="static/css/jqm-icon-pack-2.0-original.css" />
+        <link rel="stylesheet" href="static/css/leaflet.css" />
+        <link type="text/css" rel="stylesheet" href="static/css/leaflet.label.css" />
+        <link rel="stylesheet" href="static/css/main.css" />
+        <link rel="stylesheet" href="static/css/leaflet.awesome-markers.css" />
+        <style>
+            /* Hide all the app pages until jQuery Mobile inits to
+               avoid the Flash of Unstyled Content */
+            [data-role=page] { display: none; }
 
-                        <div data-role="collapsible" data-collapsed="false">
-                            <h3>Picture editing settings</h3>
-                        	
-                            <label for="quality_input" data-mini="true">Picture quality:</label>
-                            <input id="quality_input" name="quality_input" type="range" min="0" max="100" step="5" value="40" data-mini="true"/>
-                            
-                            <label for="width_input" data-mini="true">Target width:</label>
-                            <input id="width_input" name="width_input" type="range" min="50" max="1500" step="25" value="500" data-mini="true"/>
-                            
-                            <label for="height_input" data-mini="true">Target height:</label>
-                            <input id="height_input" name="height_input" type="range" min="50" max="1500" step="25" value="500" data-mini="true"/>
-                            
-                            <p><label data-mini="true">Picture editing:</label></p>
-                            <div data-role="controlgroup">
-                                <label for="edit_input" data-mini="true">Allow result zoom and crop</label>
-                                <input id="edit_input" name="edit_input" type="checkbox" checked data-mini="true">
-                                
-                                <label for="orient_input" data-mini="true">Allow orientation correction</label>
-                                <input id="orient_input" name="orient_input" type="checkbox" checked data-mini="true">
-                            </div>
-                    	</div>
-                    	
-                    	<div data-role="collapsible">
-                            <h3>Picture saving options</h3>
-                        	
-                            <label for="encod_input" data-mini="true">Choose encoding type:</label>
-                            <select id="encod_input" name="encod_input" data-mini="true">
-                              <option value="0" selected="selected">JPEG</option>
-                              <option value="1">PNG</option>
-                            </select>
-                                  
-                            <label for="save_input" data-mini="true">Save picture to photo album</label>
-                            <select name="save_input" id="save_input" data-role="slider" data-mini="true" data-theme="a" data-track-theme="a">
-                                <option value="false">No</option>
-                            	<option value="true" selected="selected">Yes</option>
-                            </select>
-                    	</div>
-                        
-                        <div data-role="collapsible">
-                            <h3>Picture opening options</h3>
-                            <label for="media_input" data-mini="true">Choose media type:</label>
-                            <select id="media_input" name="media_input" data-mini="true">
-                              <option value="0" selected="selected">Pictures</option>
-                              <option value="1">Videos</option>
-                              <option value="2">All media</option>
-                            </select>
-                        </div>
-                    </div>
-                  </form>
-            </div>
-        </div>
-        
-        <!-- Camera capture result page -->
-        <div data-role="page" id="result_page" data-theme="a">
-            <div data-role="header">
-                <h3>Result</h3>
-                <a href="#home_page" id="home_button" data-role="button" data-theme="b" data-mini="true" class="ui-btn-right">Back to menu</a>
+            .splashscreen {
+                width: 100%;
+                height: 100%;
+                border: 0;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index:1001;
+                background: lightgrey;
+                text-shadow: none;
+                color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <noscript>Error: No Javascript available in your browser.</noscript>
+        <div id="splashscreen" class="splashscreen" style="display: none"></div>
+        <script>
+            // Show the splash screen with a loading message
+            // Handler to hide the message when the loading stops
+            window.onload = function() {
+                document.getElementById("splashscreen").style.display = 'none';
+            };
+            document.getElementById("splashscreen").innerHTML = 'Loading...';
+            document.getElementById("splashscreen").style.display = 'block';
+        </script>
+        <div id="map" style="width: 100%; height: 100%; border: 0;"></div>
+        <!-- data-role="page" and other data-roles are jQuery mobile specific widget attributes -->
+        <!-- The jQuery mobile will link to pages with data-role="page" based on the id attribute.
+             There are several pages in this index.html document. -->
+        <!-- Front page -->
+        <div id="front-page" data-role="page">
+            <div data-role="header" data-theme="b">
+                <h1>Navigator</h1>
+                <!-- Settings button.
+                     data-icon="gear" and class="ui-btn-right" are jQuery mobile specific -->
+                <a href="#front-page-menu" data-icon="menu" class="ui-btn-right" data-rel="popup" data-iconpos="notext" data-transition="slidedown">Menu</a>
             </div>
             <div data-role="content">
-                <h3>Result picture:</h3>
-                <img id="pic" src="" style="display: none; border: 2px black;"/>
+                <!-- "Search box" with the list of results for the location that the user wants to go to. -->
+                <ul id="navigate-to-input" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Where do you want to go?"></ul>
+            </div>
+            <div data-role="content" style="height: 63px; text-align: right">
+            </div>
+            <div data-role="content" style="position: absolute; width: 100%; bottom: 0; text-align: center; padding-left: 0; padding-right: 0">
+                        <fieldset data-role="controlgroup" data-type="horizontal" data-shadow="true" style="display: inline-block">
+                            <label><input type="checkbox" name="usetransit" checked="checked"><img src="static/images/bus_stop.svg" style="height: 20px;" /></input></label>
+                        </fieldset>
+                        <fieldset id="vehiclesettings" data-role="controlgroup" data-type="horizontal" data-shadow="true" style="display: inline-block">
+                            <label><input type="radio" name="vehiclesettings" value="WALK" checked="checked"><img src="static/images/walking.svg" style="height: 20px;"/></input></label>
+                            <label><input type="radio" name="vehiclesettings" value="BICYCLE"><img src="static/images/bicycle.svg" style="height: 20px;"/></input></label>
+                            <label><input type="radio" name="vehiclesettings" value="CAR"><img src="static/images/car.svg" style="height: 20px;"/></input></label>
+                        </fieldset>
+            </div>
+            <div id="front-page-menu" data-role="popup">
+                <ul data-role="listview" data-inset="true">
+                  <li><a href="#settings">
+                      <h3>Settings</h3>
+                      <p>Access the routing settings.</p>
+                  </a></li>
+                  <li><a href="#service-directory?">
+                      <h3>Find nearest services</h3>
+                      <p>Find a service that is nearest to your current location.</p>
+                  </a></li>
+                  <!-- pageshow event for the map-page is handled in the routing.coffee -->
+                  <li><a href="#map-page">
+                      <h3>Browse map</h3>
+                      <p>Calculate routes and browse for points of interest.</p>
+                  </a></li>
+                </ul>
             </div>
         </div>
-	</body>
+        <!-- Map page -->
+        <div id="map-page" data-role="page">
+            <div data-role="header" data-theme="b">
+                <a href="" data-rel="back">Back</a>
+                <h1 style="margin-bottom: 0; margin-top: 0"><a href="#navigation-page" data-icon="play" data-role="button" data-inline="true" style="margin-top: 3px; margin-bottom: 7px">Let's go</a></h1>
+                <a href="#map-page-menu" data-icon="menu" class="ui-btn-right" data-rel="popup" data-iconpos="notext" data-transition="slidedown" data-shadow="false" data-iconshadow="false">Menu</a>
+            </div>
+            <div data-role="footer" data-position="fixed" style="padding: 0; margin: 0; border: 0; overflow: visible;">
+                <ul id="routes" class="route-list" style="display: block">
+                    <li>
+                        <ul class="route-buttons-0 route-graph" style="display: none">
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="route-buttons-1 route-graph" style="display: none">
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="route-buttons-2 route-graph" style="display: none">
+                        </ul>
+                    </li>
+                </ul>
+                <form id="comment-box" style="display: none; width: 100%; height: 100%; border: 0;">
+                    <textarea style="width: 100%; height: 100%;"></textarea>
+                    <button>Submit</button>
+                </form>
+            </div>
+            <div id="error-popup" data-role="popup" data-rel="dialog" data-transition="pop" data-overlay-theme="a">
+                <div data-role="header">
+                    <h1>Routing failed</h1>
+                </div>
+                <div data-role="content">
+                    <p>Error</p>
+                    <a href="#" data-role="button" data-rel="back">Dismiss</a>
+                </div>
+            </div>
+            <div id="map-page-menu" data-role="popup">
+                <ul data-role="listview" data-inset="true">
+                  <li><a href="#settings">
+                      <h3>Settings</h3>
+                      <p>Access the routing settings.</p>
+                  </a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Navigation page -->
+        <div id="navigation-page" data-role="page">
+            <div data-role="header" data-theme="b" style="text-align: center">
+                <a href="" data-rel="back">Back</a>
+                <h1 style="margin-bottom: 0; margin-top: 0"><a data-icon="pause" data-role="button" data-inline="true" style="margin-top: 3px; margin-bottom: 7px">Pause</a></h1>
+                <a href="#navigation-page-menu" data-icon="menu" class="ui-btn-right" data-rel="popup" data-iconpos="notext" data-transition="slidedown">Menu</a>
+            </div>
+            <div data-role="footer" data-position="fixed" style="padding: 0; margin: 0; border: 0; overflow: visible;">
+                <ul class="route-list" style="display: block">
+                    <li>
+                        <ul class="route-buttons-0 route-graph" style="display: none">
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="route-buttons-1 route-graph" style="display: none">
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="route-buttons-2 route-graph" style="display: none">
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div id="navigation-page-menu" data-role="popup">
+                <ul data-role="listview" data-inset="true">
+                  <li><a href="#settings">
+                      <h3>Settings</h3>
+                      <p>Access the routing settings.</p>
+                  </a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- This page is for palvelukartta.coffee but neither is not used anymore as
+              the geocoder API is used nowadays. -->
+        <div id="find-nearest" data-role="page">
+            <div data-role="header">
+                <a href="" data-rel="back">Back</a>
+                <h1>Find nearest services</h1>
+            </div>
+            <div data-role="content">
+            </div>
+        </div>
+        <!-- "Find nearest services" page -->
+        <div id="service-directory" data-role="page">
+            <div data-role="header">
+                <!-- jQuery mobile back button to go one page back in history -->
+                <a href="" data-rel="back">Back</a>
+                <h1>Find nearest services</h1>
+            </div>
+            <div data-role="content">
+                <ul data-role="list-view">
+                </ul>
+            </div>
+        </div>
+        <!-- "Nearest services" page -->
+        <div id="service-list" data-role="page">
+            <div data-role="header">
+                <a href="" data-rel="back">Back</a>
+                <h1>Nearest services</h1>
+            </div>
+            <div data-role="content">
+                <ul data-role="list-view">
+                </ul>
+            </div>
+        </div>
+        <!-- Settings page -->
+        <div id="settings" data-role="page">
+            <div data-role="header">
+                <a href="" data-rel="back">Back</a>
+                <h1>Settings</h1>
+            </div>
+            <div data-role="content">
+                <ul data-role="listview" style="margin-bottom: 0">
+                    <li>
+                        <fieldset id="modesettings" data-role="controlgroup" data-type="horizontal">
+                            <label><input type="checkbox" name="BUS"><img src="static/images/bus_stop.svg" style="height: 20px;"/></input></label>
+                            <label><input type="checkbox" name="TRAM"><img src="static/images/tram_stop.svg" style="height: 20px;"/></input></label>
+                            <label><input type="checkbox" name="RAIL"><img src="static/images/train_station2.svg" style="height: 20px;"/></input></label>
+                            <label><input type="checkbox" name="SUBWAY"><img src="static/images/subway.svg" style="height: 20px;"/></input></label>
+                        </fieldset>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="wheelchair" id="wheelchair" />
+                        <label for="wheelchair"><img src="static/images/wheelchair.svg" height=20 style="margin-right:16px; margin-left: 16px" />Wheelchair accessible</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="prefer-free" id="prefer-free" />
+                        <label for="prefer-free">Prefer free routes</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script src="static/js/jquery-1.8.3.min.js"></script>
+        <script src="static/js/handlebars.min.js"></script>
+        <script src="static/js/leaflet.js"></script>
+        <script src="static/js/leaflet.label.js"></script>
+        <script src="static/js/underscore-min.js"></script>
+        <script src="static/js/backbone-min.js"></script>
+        <script src="static/js/moment.min.js"></script>
+        <script src="static/js/leaflet-osm-notes.js"></script>
+        <script src="http://dev.hsl.fi:9002/faye/client.js"></script>
+        <script>
+        // Functional testing with TestEm using mocha+chai-framework.
+        if (window.location.hash === '#testem') {
+            window.testem_mode = true;
+            jQuery(document).ready(function($) {
+                $('#front-page').bind('pageinit', function() {
+                    var loadDependencies, suite = '/tests/test_functional.js';
+                    loadDependencies = function(urls, callback) {
+                        if (urls.length > 0) {
+                           $.getScript(urls.shift(0), function() {
+                               loadDependencies(urls, callback);
+                           });
+                        } else { callback(); }
+                    }
+                    loadDependencies([
+                        '/testem/mocha.js', '/testem/chai.js', '/testem.js'
+                    ], function() {
+                        mocha.setup('bdd');
+                        $.getScript(suite, function() { mocha.run(); });
+                    });
+                });
+            });
+        }
+        </script>
+        <!-- Initialization related code -->
+        <script src="static/js/init.js"></script>
+        <!-- Configure the geographical area where the app is to be used in -->
+        <script src="static/js/config.js"></script>
+        <script src="static/js/local_config.js"></script>
+        <!-- "Colorful iconic & retina-proof markers for Leaflet,
+             based on the Font Awesome/Twitter Bootstrap icons" -->
+        <script src="static/js/leaflet-awesome-markers.js"></script>
+        <!-- Palvelukartta is not currently used. It utilizes
+             REST API for City of Helsinki Service Map -->
+        <script src="static/js/palvelukartta.js"></script>
+        <!-- Handles routing and map drawing -->
+        <script src="static/js/routing.js"></script>
+        <!-- Handles autocompletion related tasks for the "Where do you want to go?"
+             filter at the first page -->
+        <script src="static/js/autocomplete.js"></script>
+        <!-- Handles POI related task such as finding nearby services and geocoding -->
+        <script src="static/js/poi.js"></script>
+        <!-- Component that handles communication with the navigator-server that
+             provides real-time info for the public transportation -->
+        <script src="static/js/realtime.js"></script>
+        <script src="static/js/reach.js"></script>
+        <!-- Load jQuery Mobile as last because init.js handles the jQuery Mobile mobileinit message. -->
+        <script src="static/js/jquery.mobile-1.3.1.min.js"></script>
+    </body>
 </html>

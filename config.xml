@@ -20,7 +20,9 @@
         
     <preference name="phonegap-version" value="2.2.0" />
     <feature name="http://api.phonegap.com/1.0/camera"/>
-    <feature name="http://api.phonegap.com/1.0/file"/>      
+    <feature name="http://api.phonegap.com/1.0/geolocation"/>
+    <feature name="http://api.phonegap.com/1.0/network"/>
+    <feature name="http://api.phonegap.com/1.0/file"/>
 
     <!-- for Android -->
     <preference name="orientation" value="portrait" />
