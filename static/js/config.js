@@ -96,29 +96,29 @@
           key: 'BC9A493B41014CAABB98F0471D759707',
           style: 998
         }
-      },
-      osm: {
-        name: "OpenStreetMap",
-        url_template: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-        opts: {
-          attribution: 'Map data &copy; 2011 OpenStreetMap contributors'
-        }
-      },
-      opencyclemap: {
-        name: "OpenCyclemap",
-        url_template: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
-        opts: {
-          attribution: 'Map data &copy; 2011 OpenStreetMap contributors, Imagery by <a href="http://www.opencyclemap.org/" target="_blank">OpenCycleMap</a>'
-        }
-      },
-      mapquest: {
-        name: "MapQuest",
-        url_template: 'http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg',
-        opts: {
-          subdomains: '1234',
-          attribution: 'Map data &copy; 2013 OpenStreetMap contributors, Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">'
-        }
-      }
+      }//,
+      // osm: {
+      //   name: "OpenStreetMap",
+      //   url_template: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      //   opts: {
+      //     attribution: 'Map data &copy; 2011 OpenStreetMap contributors'
+      //   }
+      // },
+      // opencyclemap: {
+      //   name: "OpenCyclemap",
+      //   url_template: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
+      //   opts: {
+      //     attribution: 'Map data &copy; 2011 OpenStreetMap contributors, Imagery by <a href="http://www.opencyclemap.org/" target="_blank">OpenCycleMap</a>'
+      //   }
+      // },
+      // mapquest: {
+      //   name: "MapQuest",
+      //   url_template: 'http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg',
+      //   opts: {
+      //     subdomains: '1234',
+      //     attribution: 'Map data &copy; 2013 OpenStreetMap contributors, Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">'
+      //   }
+      // }
     }
   };
 
@@ -130,7 +130,7 @@
     bbox_ne: [-38.80520267875893, -62.380027770996094],
     bbox_sw: [-38.638327308061875, -62.10365295410156],
     center: [-38.7218, -62.2415],
-    otp_base_url: "http://192.168.43.124:8080/opentripplanner-api-webapp/ws/",
+    otp_base_url: "http://terbio.gnucleo.net:8090/opentripplanner-api-webapp/ws/",
     poi_muni_id: null,
     waag_id: "admr.ar.bahiablanca",
     poi_providers: {
@@ -163,138 +163,138 @@
     autocompletion_providers: ["poi_categories", "history", "osm", "google"]
   };
 
-  manchester = {
-    name: "Greater Manchester",
-    country: "gb",
-    cities: ["Bolton", "Bury", "Oldham", "Rochdale", "Stockport", "Tameside", "Trafford", "Wigan", "Manchester", "Salford"],
-    google_autocomplete_append: "Manchester",
-    bbox_ne: [53.685760, -1.909630],
-    bbox_sw: [53.327332, -2.730550],
-    center: [53.479167, -2.244167],
-    otp_base_url: "http://dev.hsl.fi/manchester/opentripplanner-api-webapp/ws/",
-    poi_muni_id: 44001,
-    waag_id: "admr.uk.gr.manchester",
-    poi_providers: {
-      "waag": [
-        {
-          type: "restaurant"
-        }, {
-          type: "cafe"
-        }, {
-          type: "bar"
-        }, {
-          type: "pub"
-        }, {
-          type: "supermarket"
-        }, {
-          type: "swimming_pool"
-        }, {
-          type: "pharmacy"
-        }
-      ],
-      "geocoder": [
-        {
-          type: "park"
-        }, {
-          type: "library"
-        }, {
-          type: "recycling"
-        }, {
-          type: "toilet"
-        }
-      ]
-    },
-    autocompletion_providers: ["poi_categories", "history", "osm", "google"]
-  };
+  // manchester = {
+  //   name: "Greater Manchester",
+  //   country: "gb",
+  //   cities: ["Bolton", "Bury", "Oldham", "Rochdale", "Stockport", "Tameside", "Trafford", "Wigan", "Manchester", "Salford"],
+  //   google_autocomplete_append: "Manchester",
+  //   bbox_ne: [53.685760, -1.909630],
+  //   bbox_sw: [53.327332, -2.730550],
+  //   center: [53.479167, -2.244167],
+  //   otp_base_url: "http://dev.hsl.fi/manchester/opentripplanner-api-webapp/ws/",
+  //   poi_muni_id: 44001,
+  //   waag_id: "admr.uk.gr.manchester",
+  //   poi_providers: {
+  //     "waag": [
+  //       {
+  //         type: "restaurant"
+  //       }, {
+  //         type: "cafe"
+  //       }, {
+  //         type: "bar"
+  //       }, {
+  //         type: "pub"
+  //       }, {
+  //         type: "supermarket"
+  //       }, {
+  //         type: "swimming_pool"
+  //       }, {
+  //         type: "pharmacy"
+  //       }
+  //     ],
+  //     "geocoder": [
+  //       {
+  //         type: "park"
+  //       }, {
+  //         type: "library"
+  //       }, {
+  //         type: "recycling"
+  //       }, {
+  //         type: "toilet"
+  //       }
+  //     ]
+  //   },
+  //   autocompletion_providers: ["poi_categories", "history", "osm", "google"]
+  // };
 
-  helsinki = {
-    name: "Helsinki Region",
-    country: "fi",
-    cities: ["Helsinki", "Vantaa", "Espoo", "Kauniainen", "Kerava", "Sipoo", "Kirkkonummi"],
-    bbox_ne: [60.653728, 25.576590],
-    bbox_sw: [59.903339, 23.692820],
-    center: [60.170833, 24.9375],
-    otp_base_url: "http://dev.hsl.fi/opentripplanner-api-webapp/ws/",
-    poi_muni_id: null,
-    waag_id: "admr.fi.uusimaa",
-    poi_providers: {
-      "waag": [
-        {
-          type: "restaurant"
-        }, {
-          type: "cafe"
-        }, {
-          type: "bar"
-        }, {
-          type: "pub"
-        }, {
-          type: "supermarket"
-        }, {
-          type: "pharmacy"
-        }
-      ],
-      "geocoder": [
-        {
-          type: "park"
-        }, {
-          type: "library"
-        }, {
-          type: "recycling"
-        }, {
-          type: "swimming_pool"
-        }, {
-          type: "toilet"
-        }
-      ]
-    },
-    autocompletion_providers: ["poi_categories", "history", "geocoder", "osm"]
-  };
+  // helsinki = {
+  //   name: "Helsinki Region",
+  //   country: "fi",
+  //   cities: ["Helsinki", "Vantaa", "Espoo", "Kauniainen", "Kerava", "Sipoo", "Kirkkonummi"],
+  //   bbox_ne: [60.653728, 25.576590],
+  //   bbox_sw: [59.903339, 23.692820],
+  //   center: [60.170833, 24.9375],
+  //   otp_base_url: "http://dev.hsl.fi/opentripplanner-api-webapp/ws/",
+  //   poi_muni_id: null,
+  //   waag_id: "admr.fi.uusimaa",
+  //   poi_providers: {
+  //     "waag": [
+  //       {
+  //         type: "restaurant"
+  //       }, {
+  //         type: "cafe"
+  //       }, {
+  //         type: "bar"
+  //       }, {
+  //         type: "pub"
+  //       }, {
+  //         type: "supermarket"
+  //       }, {
+  //         type: "pharmacy"
+  //       }
+  //     ],
+  //     "geocoder": [
+  //       {
+  //         type: "park"
+  //       }, {
+  //         type: "library"
+  //       }, {
+  //         type: "recycling"
+  //       }, {
+  //         type: "swimming_pool"
+  //       }, {
+  //         type: "toilet"
+  //       }
+  //     ]
+  //   },
+  //   autocompletion_providers: ["poi_categories", "history", "geocoder", "osm"]
+  // };
 
-  nl = {
-    name: "Netherlands",
-    country: "nl",
-    cities: null,
-    google_autocomplete_append: "Netherlands",
-    google_suffix: ", The Netherlands",
-    bbox_ne: [53.617498100000006, 13.43461],
-    bbox_sw: [43.554167, 2.35503],
-    center: [52.37832, 4.89973],
-    min_zoom: 8,
-    otp_base_url: "http://144.76.26.165/amsterdam/otp-rest-servlet/ws/",
-    poi_muni_id: null,
-    waag_id: "admr.nl.nederland",
-    poi_providers: {
-      "waag": [
-        {
-          type: "library"
-        }, {
-          type: "park"
-        }, {
-          type: "swimming_pool"
-        }, {
-          type: "restaurant"
-        }, {
-          type: "cafe"
-        }, {
-          type: "bar"
-        }, {
-          type: "pub"
-        }, {
-          type: "supermarket"
-        }, {
-          type: "toilet"
-        }, {
-          type: "recycling"
-        }
-      ]
-    },
-    autocompletion_providers: ["poi_categories", "osm", "bag42", "google"]
-  };
+  // nl = {
+  //   name: "Netherlands",
+  //   country: "nl",
+  //   cities: null,
+  //   google_autocomplete_append: "Netherlands",
+  //   google_suffix: ", The Netherlands",
+  //   bbox_ne: [53.617498100000006, 13.43461],
+  //   bbox_sw: [43.554167, 2.35503],
+  //   center: [52.37832, 4.89973],
+  //   min_zoom: 8,
+  //   otp_base_url: "http://144.76.26.165/amsterdam/otp-rest-servlet/ws/",
+  //   poi_muni_id: null,
+  //   waag_id: "admr.nl.nederland",
+  //   poi_providers: {
+  //     "waag": [
+  //       {
+  //         type: "library"
+  //       }, {
+  //         type: "park"
+  //       }, {
+  //         type: "swimming_pool"
+  //       }, {
+  //         type: "restaurant"
+  //       }, {
+  //         type: "cafe"
+  //       }, {
+  //         type: "bar"
+  //       }, {
+  //         type: "pub"
+  //       }, {
+  //         type: "supermarket"
+  //       }, {
+  //         type: "toilet"
+  //       }, {
+  //         type: "recycling"
+  //       }
+  //     ]
+  //   },
+  //   autocompletion_providers: ["poi_categories", "osm", "bag42", "google"]
+  // };
 
   citynavi.update_configs({
     defaults: defaults,
-    helsinki: helsinki,
-    manchester: manchester,
+    // helsinki: helsinki,
+    // manchester: manchester,
     bahiablanca: bahiablanca,
     nl: nl
   });
