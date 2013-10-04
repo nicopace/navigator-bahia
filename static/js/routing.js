@@ -481,10 +481,12 @@
     params = {
       toPlace: "" + target.lat + "," + target.lng,
       fromPlace: "" + source.lat + "," + source.lng,
-      minTransferTime: 180,
+      // minTransferTime: 180,
+      optimize: 'QUICK',
       walkSpeed: 1.17,
-      maxWalkDistance: 100000,
-      numItineraries: 3
+      maxWalkDistance: 840, //100000,
+      arriveBy:false
+      // numItineraries: 3
     };
     if (!$('[name=usetransit]').attr('checked')) {
       params.mode = $("input:checked[name=vehiclesettings]").val();
