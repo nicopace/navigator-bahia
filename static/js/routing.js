@@ -377,7 +377,7 @@
           } else if ((_ref10 = leg.routeId) != null ? _ref10.match(/^10(0|10)/) : void 0) {
             _ref11 = ["TRAM", 0], leg.mode = _ref11[0], leg.routeType = _ref11[1];
           } else if (leg.mode !== "WALK") {
-            _ref12 = ["BUS", 3], leg.mode = _ref12[0], leg.routeType = _ref12[1];
+            _ref12 = ["BUSISH", 3], leg.mode = _ref12[0], leg.routeType = _ref12[1];
           }
         }
         if (leg.startTime - time > 1000) {
