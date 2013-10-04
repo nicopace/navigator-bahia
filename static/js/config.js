@@ -75,16 +75,16 @@
     },
     icons: {
       google: {
-        WALK: 'walking.svg',
-        CAR: 'car.svg',
-        BICYCLE: 'bicycle.svg',
-        WAIT: 'clock.svg',
-        0: 'tram_stop.svg',
-        1: 'subway.svg',
-        2: 'train_station2.svg',
-        3: 'bus_stop.svg',
-        4: 'port.svg',
-        109: 'train_station2.svg'
+        WALK: 'walking.svg.png',
+        CAR: 'car.svg.png',
+        BICYCLE: 'bicycle.svg.png',
+        WAIT: 'clock.svg.png',
+        0: 'tram_stop.svg.png',
+        1: 'subway.svg.png',
+        2: 'train_station2.svg.png',
+        3: 'bus_stop.svg.png',
+        4: 'port.svg.png',
+        109: 'train_station2.svg.png'
       }
     },
     maps: {

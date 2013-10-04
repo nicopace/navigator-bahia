@@ -200,17 +200,17 @@
       type: "library",
       name: "Library",
       plural_name: "Libraries",
-      icon: "library.svg"
+      icon: "library.svg.png"
     }),
     "recycling": new POICategory({
       type: "recycling",
       name: "Recycling point",
-      icon: "recycling.svg"
+      icon: "recycling.svg.png"
     }),
     "park": new POICategory({
       type: "park",
       name: "Park",
-      icon: "coniferous_and_deciduous.svg",
+      icon: "coniferous_and_deciduous.svg.png",
       waag_filter: {
         "osm::leisure": "park"
       }
@@ -218,22 +218,22 @@
     "swimming_pool": new POICategory({
       type: "swimming_pool",
       name: "Swimming pool",
-      icon: "swimming_indoor.svg"
+      icon: "swimming_indoor.svg.png"
     }),
     "cafe": new POICategory({
       type: "cafe",
       name: "Cafe",
-      icon: "cafe.svg"
+      icon: "cafe.svg.png"
     }),
     "bar": new POICategory({
       type: "bar",
       name: "Bar",
-      icon: "bar.svg"
+      icon: "bar.svg.png"
     }),
     "pharmacy": new POICategory({
       type: "pharmacy",
       name: "Pharmacy",
-      icon: "pharmacy.svg",
+      icon: "pharmacy.svg.png",
       waag_filter: {
         "osm::amenity": "pharmacy"
       }
@@ -241,7 +241,7 @@
     "toilet": new POICategory({
       type: "toilet",
       name: "Toilet (public)",
-      icon: "toilets_men.svg",
+      icon: "toilets_men.svg.png",
       waag_filter: {
         "osm::amenity": "toilets"
       }
@@ -249,12 +249,12 @@
     "pub": new POICategory({
       type: "pub",
       name: "Pub",
-      icon: "pub.svg"
+      icon: "pub.svg.png"
     }),
     "supermarket": new POICategory({
       type: "supermarket",
       name: "Supermarket",
-      icon: "supermarket.svg",
+      icon: "supermarket.svg.png",
       waag_filter: {
         "osm::shop": "supermarket"
       }
@@ -262,7 +262,7 @@
     "restaurant": new POICategory({
       type: "restaurant",
       name: "Restaurant",
-      icon: "restaurant.svg"
+      icon: "restaurant.svg.png"
     })
   };
 

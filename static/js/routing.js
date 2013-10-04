@@ -604,7 +604,7 @@
       }
       return _results;
     })());
-    $('.control-details').html("<div class='route-details'><div>Itinerary total:&nbsp;&nbsp; &nbsp;&nbsp;<i><img src='static/images/clock.svg'> " + Math.ceil(itinerary.duration / 1000 / 60) + "min<\/i>&nbsp;&nbsp; &nbsp;&nbsp;<i><img src='static/images/walking.svg'> " + Math.ceil(total_walking_duration / 1000 / 60) + "min / " + Math.ceil(total_walking_distance / 100) / 10 + "km<\/i></div></div>");
+    $('.control-details').html("<div class='route-details'><div>Itinerary total:&nbsp;&nbsp; &nbsp;&nbsp;<i><img src='static/images/clock.svg.png'> " + Math.ceil(itinerary.duration / 1000 / 60) + "min<\/i>&nbsp;&nbsp; &nbsp;&nbsp;<i><img src='static/images/walking.svg.png'> " + Math.ceil(total_walking_duration / 1000 / 60) + "min / " + Math.ceil(total_walking_distance / 100) / 10 + "km<\/i></div></div>");
     _results = [];
     for (_i = 0, _len = legs.length; _i < _len; _i++) {
       leg = legs[_i];
@@ -772,11 +772,11 @@
       targetMarker.closePopup();
       return sourceMarker.openPopup();
     });
-    $start = $("<li class='leg'><div class='leg-bar'><i><img src='static/images/walking.svg' height='100%' style='visibility: hidden' /></i><div class='leg-indicator' style='font-style: italic; text-align: left'>" + (moment(trip_start).format("HH:mm")) + "</div></div></li>");
+    $start = $("<li class='leg'><div class='leg-bar'><i><img src='static/images/walking.svg.png' height='100%' style='visibility: hidden' /></i><div class='leg-indicator' style='font-style: italic; text-align: left'>" + (moment(trip_start).format("HH:mm")) + "</div></div></li>");
     $start.css("left", "" + 0 + "%");
     $start.css("width", "" + 10 + "%");
     $list.append($start);
-    $end = $("<li class='leg'><div class='leg-bar'><i><img src='static/images/walking.svg' height='100%' style='visibility: hidden' /></i><div class='leg-indicator' style='font-style: italic; text-align: right'>" + (moment(trip_start + trip_duration).format("HH:mm")) + "</div></div></li>");
+    $end = $("<li class='leg'><div class='leg-bar'><i><img src='static/images/walking.svg.png' height='100%' style='visibility: hidden' /></i><div class='leg-indicator' style='font-style: italic; text-align: right'>" + (moment(trip_start + trip_duration).format("HH:mm")) + "</div></div></li>");
     $end.css("right", "" + 0 + "%");
     $end.css("width", "" + 10 + "%");
     $list.append($end);
@@ -785,7 +785,7 @@
     _fn = function(index) {
       var $leg, color, icon_name, leg_duration, leg_label, leg_start, leg_subscript, _ref2, _ref3;
       if (leg.mode === "WALK" && $('#wheelchair').attr('checked')) {
-        icon_name = "wheelchair.svg";
+        icon_name = "wheelchair.svg.png";
       } else {
         icon_name = google_icons[(_ref2 = leg.routeType) != null ? _ref2 : leg.mode];
       }
