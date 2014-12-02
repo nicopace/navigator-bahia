@@ -22,5 +22,5 @@ cordova build android
 
 ### Using Phonegap Build
 
-# Compress repo into a zip file
-# upload it to your build.phonegap.com account.
+1. Compress repo into a zip file
+2. upload it to your build.phonegap.com account.
